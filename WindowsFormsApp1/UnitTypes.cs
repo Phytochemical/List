@@ -11,6 +11,6 @@ namespace ShoppingList
     /// </summary>
     enum UnitTypes
     {
-        cm, m, ft, inch, g, gallon, kg, lb, lit, oz, slice, loaf
+        cm, m, ft, inch, g, gallon, kg, lb, lit, oz, slice, box, loaf, piece
     }
 }

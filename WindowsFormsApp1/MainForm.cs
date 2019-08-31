@@ -174,6 +174,8 @@ namespace ShoppingList
         {
             bool isInputValid = false;
 
+            ShoppingItem myShoppingItem = ReadInput(out isInputValid);
+
             if (isInputValid)
             {
                 itemManager.DeleteItem(listItems.SelectedIndex);

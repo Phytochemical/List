@@ -63,7 +63,6 @@ namespace ShoppingList
             {
                 isItemValid = true;
                 itemList[index] = itemIn;
-                //itemList.Insert(index, itemIn);
             }
             return isItemValid;
         }
@@ -72,9 +71,10 @@ namespace ShoppingList
         {
             bool isItemValid = false;
 
-            if (CheckIndex(index))
+            if (CheckIndex(index) )
             {
                 itemList.RemoveAt(index);
+                Console.Out.WriteLine(index);
                 isItemValid = true;
             }
             return isItemValid;
