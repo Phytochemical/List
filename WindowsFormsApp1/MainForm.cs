@@ -27,6 +27,9 @@ namespace ShoppingList
             comboBox.SelectedIndex = (int)UnitTypes.slice;
         }
 
+        /// <summary>
+        /// updates the output after the input addition or revision
+        /// </summary>
         private void UpdateGUI()
         {
             listItems.Items.Clear();
@@ -39,6 +42,11 @@ namespace ShoppingList
             }
         }
 
+        /// <summary>
+        /// read user input and create object item containing description, amount, unit
+        /// </summary>
+        /// <param name="isInputValid"></param>
+        /// <returns>item</returns>
         private ShoppingItem ReadInput(out bool isInputValid)
         {
             isInputValid = false;
@@ -62,6 +70,11 @@ namespace ShoppingList
             return item;
         }
 
+        /// <summary>
+        /// verify input amount and display error message when incorrect format
+        /// </summary>
+        /// <param name="isAmountValid"></param>
+        /// <returns>input amount</returns>
         private double ReadAmount(out bool isAmountValid)
         {
             double amount = 0.0;
@@ -83,10 +96,15 @@ namespace ShoppingList
             return amount;
         }
 
+        /// <summary>
+        /// verify the select unit from the pull down menu
+        /// </summary>
+        /// <param name="isUnitValid"></param>
+        /// <returns>unit</returns>
         private UnitTypes ReadUnit(out bool isUnitValid)
         {
             isUnitValid = false;
-            UnitTypes unit = UnitTypes.lb;
+            UnitTypes unit = UnitTypes.box;
 
             if (comboBox.SelectedIndex >= 0)
             {
@@ -100,11 +118,20 @@ namespace ShoppingList
             return unit;
         }
 
+        /// <summary>
+        /// displays error message
+        /// </summary>
+        /// <param name="message"></param>
         private void GiveMessage(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        /// <summary>
+        /// validate user input element and prints error message when incorrect
+        /// </summary>
+        /// <param name="isDescriptionValid"></param>
+        /// <returns></returns>
         private string ReadDescription(out bool isDescriptionValid)
         {
             isDescriptionValid = false;
@@ -117,7 +144,7 @@ namespace ShoppingList
             }
             else
             {
-                GiveMessage("Provide a description");
+                GiveMessage("Please provide a description");
             }
             return text;
         }
@@ -170,6 +197,11 @@ namespace ShoppingList
             }
         }
 
+        /// <summary>
+        /// read user input and delete element based on the index
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             bool isInputValid = false;
