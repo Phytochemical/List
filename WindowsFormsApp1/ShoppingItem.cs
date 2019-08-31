@@ -4,8 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace ShoppingList
 {
+    //TODO one default constructor
+    //TODO one constructo with one parameter initialize (description)
+    //TODO should call three parameters with this keyword
+    //TODO one constructo with three parameter (description, amount, unit)
+    //TODO override ToString method -> returns string format with values saved in object ShoppingItem ShoppingItem(string description)
+    //TODO ShoppingItem(string name, double amount, UnitTypes unit)
+    //TODO ToString(): string
     class ShoppingItem
     {
 
@@ -13,6 +20,12 @@ namespace WindowsFormsApp1
         private double amount;
         private UnitTypes unit;
 
+        /// <summary>
+        /// initiate the ofject
+        /// </summary>
+        /// <param name="name">Input, item description</param>
+        /// <param name="amount">Input, item amount or quanitity</param>
+        /// <param name="unit">Input, unit type</param>
         public ShoppingItem(string name, double amount, UnitTypes unit)
         {
             this.description = name;
@@ -20,7 +33,11 @@ namespace WindowsFormsApp1
             this.unit = unit;
         }
 
-        public ShoppingItem() : this("Unknown", 1.0, UnitTypes.slice)
+        /// <summary>
+        /// deafult constructor, sets default values by itself
+        /// ShoppingItem myItem = new ShoppingItem();
+        /// </summary>
+        public ShoppingItem() : this("Unknown", 1.0, UnitTypes.kg)
         {
 
         }
@@ -30,6 +47,10 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// copy constructor, creates an object with values from different object by making a complete copy of the internal reference
+        /// </summary>
+        /// <param name="theOtherShoppingItem"></param>
         public ShoppingItem (ShoppingItem newItem)
         {
             description = newItem.description;

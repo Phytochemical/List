@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace ShoppingList
 {
+    // uses ItemManager and ShoppingItem object
     public partial class MainForm : Form
     {
         ItemManager itemManager = new ItemManager();
@@ -133,6 +134,11 @@ namespace WindowsFormsApp1
             comboBox.SelectedIndex = (int)item.Unit;
         }
 
+        /// <summary>
+        /// read user user input and prints it on an empty list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             bool isInputValid = false;
@@ -142,6 +148,35 @@ namespace WindowsFormsApp1
             if (isInputValid)
             {
                 itemManager.AddItem(item);
+                UpdateGUI();
+            }
+        }
+
+        /// <summary>
+        /// read user input and replaces the old data with the new input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+            bool isInputValid = false;
+
+            ShoppingItem myShoppingitem = ReadInput(out isInputValid);
+
+            if (isInputValid)
+            {
+                itemManager.ChangeItem(myShoppingitem, listItems.SelectedIndex);
+                UpdateGUI();
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            bool isInputValid = false;
+
+            if (isInputValid)
+            {
+                itemManager.DeleteItem(listItems.SelectedIndex);
                 UpdateGUI();
             }
         }
@@ -156,17 +191,5 @@ namespace WindowsFormsApp1
 
         }
 
-        private void buttonChange_Click(object sender, EventArgs e)
-        {
-            bool isInputValid = false;
-
-            ShoppingItem myShoppingitem = ReadInput(out isInputValid);
-
-            if (isInputValid)
-            {
-                itemManager.ChangeItem(myShoppingitem, listItems.SelectedIndex);
-                UpdateGUI();
-            }
-        }
     }
 }

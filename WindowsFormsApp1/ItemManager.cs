@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace ShoppingList
 {
+    // container class that manages a list of ShoppingItem type objet
+    // adds new item
+    // replaces item with new item
     class ItemManager
     {
         private List<ShoppingItem> itemList;
@@ -15,6 +18,11 @@ namespace WindowsFormsApp1
             itemList = new List<ShoppingItem>();
         }
 
+        /// <summary>
+        /// checks if the return value is valid
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public ShoppingItem GetItem(int index)
         {
             if (!CheckIndex(index))
@@ -41,6 +49,12 @@ namespace WindowsFormsApp1
             return isIteamValid;
         }
 
+        /// <summary>
+        /// replace existing object with a new object
+        /// </summary>
+        /// <param name="itemIn"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool ChangeItem(ShoppingItem itemIn, int index)
         {
             bool isItemValid = false;
@@ -49,7 +63,7 @@ namespace WindowsFormsApp1
             {
                 isItemValid = true;
                 itemList[index] = itemIn;
-                itemList.Insert(index, itemIn);
+                //itemList.Insert(index, itemIn);
             }
             return isItemValid;
         }
@@ -66,6 +80,11 @@ namespace WindowsFormsApp1
             return isItemValid;
         }
 
+        /// <summary>
+        /// 
+        /// calls each item ToString();
+        /// </summary>
+        /// <returns></returns>
         public string[] GetItemInfoStrings()
         {
             string[] stringInfoStrings = new string[itemList.Count];
@@ -79,6 +98,11 @@ namespace WindowsFormsApp1
             return stringInfoStrings;
         }
 
+        /// <summary>
+        /// checks index out of range
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private bool CheckIndex(int index)
         {
             return (index >= 0) && (index < itemList.Count);
